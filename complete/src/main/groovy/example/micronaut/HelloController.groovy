@@ -10,8 +10,8 @@ import io.micronaut.http.MediaType
 @Controller("/hello") // <1>
 class HelloController {
     @Get("/") // <2>
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN) // <3>
     String index() {
-        "Hello World" // <3>
+        "Hello World" // <4>
     }
 }
