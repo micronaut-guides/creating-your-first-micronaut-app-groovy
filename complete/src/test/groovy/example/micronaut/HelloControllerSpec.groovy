@@ -1,31 +1,26 @@
 package example.micronaut
 
-import io.micronaut.context.ApplicationContext
 import io.micronaut.http.HttpRequest
 import io.micronaut.http.client.RxHttpClient
-import io.micronaut.runtime.server.EmbeddedServer
-import spock.lang.AutoCleanup
-import spock.lang.Shared
+import io.micronaut.http.client.annotation.Client
+import io.micronaut.test.annotation.MicronautTest
 import spock.lang.Specification
 
+import javax.inject.Inject
+
+@MicronautTest // <1>
 class HelloControllerSpec extends Specification {
 
-
-    @Shared
-    @AutoCleanup // <1>
-    EmbeddedServer embeddedServer = ApplicationContext.run(EmbeddedServer) // <2>
-
-    @Shared
-    @AutoCleanup
-    RxHttpClient client = embeddedServer.applicationContext.createBean(RxHttpClient, embeddedServer.getURL()) // <3>
+    @Inject
+    @Client("/")
+    RxHttpClient client // <2>
 
     void "test hello world response"() {
         when:
-        HttpRequest request = HttpRequest.GET('/hello') // <4>
-        String rsp  = client.toBlocking().retrieve(request)
+        HttpRequest request = HttpRequest.GET('/hello') // <3>
+        String rsp = client.toBlocking().retrieve(request)
 
         then:
         rsp == "Hello World"
     }
-
 }
