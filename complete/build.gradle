@@ -47,10 +47,6 @@ dependencies {
 test.classpath += configurations.developmentOnly
 
 mainClassName = "example.micronaut.Application"
-// use JUnit 5 platform
-test {
-    useJUnitPlatform()
-}
 
 shadowJar {
     mergeServiceFiles()
