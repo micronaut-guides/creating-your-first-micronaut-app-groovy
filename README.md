@@ -1,3 +1,1 @@
-# Creating your first Micronaut Groovy app #
-
-The guide is available at http://guides.micronaut.io/creating-your-first-micronaut-app-groovy/guide/index.html
+# This guide has been deprecated and moved to https://github.com/micronaut-projects/micronaut-guides-poc. Please open any issue or pull request in that repository.
